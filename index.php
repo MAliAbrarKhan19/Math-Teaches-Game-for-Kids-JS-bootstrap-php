@@ -57,68 +57,17 @@
 
   <div class="bg-light offset-md-4 col-md-3">
 
-    <p id="currenttime"></p>
-    <h3 class="text-danger text-center" id="currenttime"></h3>
+    <!-- <p id="currenttime"></p> -->
     
   </div>
   <div class="col-md-1"></div>
 </div>
 <!-- Row 2 -->
 
-<!-- counttimer  JavaScript -->
-<script type="text/javascript">
-        
-//             setTimeout(timecounter,3000);
-//            function timecounter(){
-//               var s="abrar";
-//             document.getElementById("currenttime").innerHTML=s;}
-               
-        var setTime=16;//set time 15 sec
-        //var setTime=10;//set time 10 sec
-
-        setInterval(timecounter,1000);
-
-       function timecounter(){
-
-              if (setTime>0) {
-              setTime=setTime-1;
-              document.getElementById("currenttime").innerHTML="<h3 class='text-success' >"+"Time:"+setTime+"</h3>";
-              }
-              else{
-              document.getElementById("currenttime").innerHTML="<h2 class='text-danger' >"+"Time's Up!!"+"</h2>";
-
-              }
-           }
-
-
-
-</script>
-<!-- counttimer  JavaScript -->
 
 
 
 
-
-
-<!-- nameEntry Function JS  Starts-->
-
-<script type="text/javascript">
-  var playername;
-    function nameEntry() {
-         // Selecting the input element and get its value 
-            var name = document.getElementById("name").value;
-            
-            // Displaying the value
-        document.getElementById("playername").innerHTML="<h3 class='text-danger'>Lets play "+"</h3>"+"<h2 class='display-2 text-danger'>"+name+"</h2>";
-        playername = name;
-
-        //alert(name);
-
-
-    }
-</script>
-
-<!-- NameEntry Function JS  Ends-->
 
 
 
@@ -149,15 +98,140 @@
 
   <div class="offset-md-1 col-md-6">
     <!-- Form Quiz section Starts -->
-        
+      
+      <!--Quiz- Row 3 Col 2 Row 1  -->
+      <div class="row gx-6">
+        <!-- Score -->
+        <div class="col-md-3">
+          <div class="badge rounded-pill " style="background-color: rgba(250, 14, 5, 0.8);">
+            <p class="h3 text-light" id="score">Score 00</p>
+          </div>
+        </div>
+        <!-- Questions Answered -->
+        <div class="col-md-3">
+          <div class="badge rounded-pill " style="background-color: rgba(35, 91, 247, 0.8);">
+            <p class="h3 text-light" id="quesno">Question 00</p>
+          </div>
+        </div>
+        <!-- Time -->
+        <div class="offset-md-1 col-md-3">
+          <div class="badge rounded-pill " style="background-color: rgba(250, 14, 5, 0.8);">
+            <p class="h3 text-light" id="currenttime">Timer</p>
+          </div>
+        </div>
+
+      </div>
+      <!--Quiz- Row 3 Col 2 Row 1  -->
+
+
+      
+
     <!-- Form Quiz section Ends -->
   </div>
 
 </div>
 <!-- Row 3 -->
 
+<!--Quiz- Row 4 Col 1  -->
+      <div class="row" id="quizbox">
+
+        <script type="text/javascript">
+          function quizbox() {
+            //print quiz box
+            document.getElementById("quizbox").innerHTML=
+            "<div class='offset-md-6 col-md-5'>"+
+              "<div class='row border border-5 border-primary rounded' style='background-color:rgba(220, 228, 252, 0.3);'>"+
+                  "<b class='col display-3' id='numOne' >0</b>"+
+                  "<b class='col display-3'>+</b>"+
+                  "<b class='col display-3' id='numTwo'>3</b>"+
+                  "<b class='col display-3'>=</b>"+
+                  "<input class='col form-control display-3' type='text' name='ans' id='ans' placeholder='5'>"+
+                  "<input class='col form-control display-3' type='submit' value='ans' onclick='' >"+
+
+              "</div>"+
+            "</div>"
+          }
+        </script>
+          
+       
+      </div>
+<!--Quiz- Row 4 Col 1 -->
 
 
+
+<!-- nameEntry Function JS  Starts-->
+
+<script type="text/javascript">
+  var playername;
+    function nameEntry() {
+         // Selecting the input element and get its value 
+            var name = document.getElementById("name").value;
+            
+            // Displaying the value
+        document.getElementById("playername").innerHTML="<h3 class='text-danger'>Lets play "+"</h3>"+"<h2 class='display-2 text-danger'>"+name+"</h2>";
+        playername = name;
+        startgame();
+        quizbox();
+        //alert(name);
+
+
+    }
+</script>
+
+<!-- NameEntry Function JS  Ends-->
+
+
+<!-- JavaScript -->
+<script type="text/javascript">
+  //VAriables
+        var setTime=16;//set time 15 sec per 
+        //var setTime=10;//set time 10 sec
+        var score=0;
+        var quesno=0;
+
+
+
+  //QUIZ JS FUnction
+       function startgame(){
+        setInterval(timecounter,1000);
+        }
+
+
+            //     setTimeout(timecounter,3000);
+            //     function timecounter(){
+            //     var s="abrar";
+            //     document.getElementById("currenttime").innerHTML=s;}
+               
+  //Time Counter JS Function   
+       function timecounter(){
+
+              if (setTime>0) {
+              setTime=setTime-1;
+              document.getElementById("currenttime").innerHTML="<h3 class='text-light' >"+"Time:"+setTime+"</h3>";
+              }
+              else{
+              document.getElementById("currenttime").innerHTML="<h2 class='text-' >"+"Time's Up!!"+"</h2>";
+
+              }
+           }
+
+
+
+    //Quiz Program
+    function quiz(){
+      var a=2;
+      var b=3;
+      var c=a+b;
+      //print a
+      document.getElementById("currenttime").innerHTML=a
+      //print b
+      //print c
+
+    }
+
+
+</script>
+<!--  JavaScript -->
 
 
 
