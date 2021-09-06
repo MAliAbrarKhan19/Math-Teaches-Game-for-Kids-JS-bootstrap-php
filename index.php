@@ -119,7 +119,7 @@
         <div class="col-md-3">
           <div class="badge rounded-pill " style="background-color: rgba(35, 91, 247, 0.8);">
             <p class="h3 text-light" id="quesno">Question 00</p>
-          </div>
+        </div>
         </div>
         <!-- Time -->
         <div class="offset-md-1 col-md-3">
@@ -154,15 +154,12 @@
                     <b class="col display-3" id="numTwo">0</b>
                     <b class="col display-3">=</b>
                     <b class="col display-3" id="numThree">0</b>
-                    <b class="col display-3" id="numThreet"></b>
-                   <!--  
-                    <input id="ansvalue" class="col display-3" type="text" name="ansvalue" ></input>
-                    <input class="col" type="submit" value="Answer" onclick="ansSubmit()">
- -->
-                    <input type="text" name="ansvalue" id="ansvalue" placeholder="" class="form-control m-1">
-          <!-- Submit Button -->
-          <input type="submit" onclick="ansSubmit()" value="Answer" class=" btn btn-success m-1">
-                      
+                    <!-- <b class="col display-3" id="numThreet"></b> -->
+ 
+                    <input type="text" name="ansvalue" id="ansvalue" placeholder="" class="">
+                    <!-- Submit Button -->
+                    <input type="submit" onclick="ansSubmit()" value="Answer" class=" btn btn-success m-1">
+                                
                 </div>
               </div>
             
@@ -201,7 +198,7 @@
         var setTime=16;//set time 15 sec per 
         //var setTime=10;//set time 10 sec
         var score=0;
-        var quesno=0;
+        var quesnum=0;
         var ans=0;
         var a=0;
         var b=0;
@@ -219,15 +216,29 @@
         document.getElementById("playername").innerHTML="<h3 class='text-danger'>Lets play "+"</h3>"+"<h2 class='display-2 text-danger'>"+playername+"</h2>";
         //Starting all functions
         startgame();
-        quiz();
-        //ansSubmit();
-        //calculate();
+        //quiz();
+        
     }
 
 // NameEntry Function JS  Ends-->
 
 //QUIZ JS FUnction
        function startgame(){
+        starttimer();
+        quesnoprint()
+        quiz();
+        }
+//Question no updater
+        function quesnoprint() {
+          quesno();
+        document.getElementById("quesno").innerHTML="Question "+quesnum;
+        }
+        function quesno(){
+          quesnum=quesnum+1;
+        }
+
+//QUIZ JS start timerFUnction
+       function starttimer(){
         setInterval(timecounter,1000);
        
         }
@@ -237,12 +248,12 @@
               if (setTime>0) {
                
                 setTime=setTime-1;
-                document.getElementById("currenttime").innerHTML="<h3 class='text-light' >"+"Time:"+setTime+"</h3>";
+                document.getElementById("currenttime").innerHTML="<h3 class='text-light' >"+"Time: "+setTime+"</h3>";
               }
               else{
                 document.getElementById("currenttime").innerHTML="<h2 class='text-' >"+"Time's Up!!"+"</h2>";
                 //GAME OVER
-                //gameOver();
+                gameOver();
 
               }
            }
@@ -250,25 +261,24 @@
         function ansSubmit() {
           // Ans
           var playerans=document.getElementById("ansvalue").value;
-          alert("function ansSubmit() playerans "+playerans);
+          //alert("function ansSubmit() playerans "+playerans);
           //return ans=playerans; 
           result= quiz();
           ans=playerans;
-          calculate(ans, result);
+          checkans(ans, result);
         }           
 
 // function
-function calculate(ans,result) {
+      function checkans(ans,result) {
+      //  alert("function calculate() Answer "+ans+" \n function calculate() Result "+result);
+        if (ans!=result) {
+          gameOver();
+        }else if(ans==result){
+          score=score+1;
+          document.getElementById("score").innerHTML="Score "+score;
+        }
+      }
 
-//  alert("function calculate() Answer "+ans+" \n function calculate() Result "+result);
-
-  if (ans!=result) {
-    gameOver();
-  }else if(ans==result){
-    score=score+1;
-    document.getElementById("score").innerHTML="Score "+score;
-  }
-}
 //Quiz Function
     function quiz(){
       //quesno
