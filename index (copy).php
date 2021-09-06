@@ -12,27 +12,19 @@
 	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-reboot.min.css">
 
 
-  <!-- Bootstrap CSS -->
-  <link rel="icon" type="text/css" href="./img/game.svg" class="text-danger" >
+    <!-- Bootstrap CSS -->
+    <link rel="icon" type="text/css" href="./img/game.svg" class="text-danger" >
     
   
 	<title class="text-danger">Math Teaches</title>
-
-<style type="text/css">
- 
-
-
-</style>
-
 </head>
 <body class="container-fluid"
  style="
         background-repeat: all;
         background-size: cover;  
         background-image:url(./img/math-bg1.jpg);
-">
+      ">
   <!-- header -->
-
 <!-- Body Starts -->
 
 <div class="row" >
@@ -142,34 +134,31 @@
 
 <!--Quiz- Row 4 Col 1  -->
       <div class="row" id="quizbox">
-          <!-- <script type="text/javascript"> -->
-            <!-- // function quizbox() {
+      
+
+        <script type="text/javascript">
+          function quizbox() {
             //print quiz box
-            //document.getElementById("quizbox").innerHTML= -->
-            
-              <div class="offset-md-5 col-md-6">
-                <div class="row border border-5 border-primary rounded" style="background-color:rgba(220, 228, 252, 0.3);">
-                    <b class="col display-3" id="numOne" >0</b>
-                    <b class="col display-3">+</b>
-                    <b class="col display-3" id="numTwo">0</b>
-                    <b class="col display-3">=</b>
-                    <b class="col display-3" id="numThree">0</b>
-                    <b class="col display-3" id="numThreet"></b>
-                   <!--  
-                    <input id="ansvalue" class="col display-3" type="text" name="ansvalue" ></input>
-                    <input class="col" type="submit" value="Answer" onclick="ansSubmit()">
- -->
-                    <input type="text" name="ansvalue" id="ansvalue" placeholder="" class="form-control m-1">
-          <!-- Submit Button -->
-          <input type="submit" onclick="ansSubmit()" value="Answer" class=" btn btn-success m-1">
-                      
-                </div>
-              </div>
+            document.getElementById("quizbox").innerHTML=
+            "<div class='offset-md-6 col-md-5'>"+
+              "<div class='row border border-5 border-primary rounded' style='background-color:rgba(220, 228, 252, 0.3);'>"+
+                  "<b class='col display-3' id='numOne' >0</b>"+
+                  "<b class='col display-3'>+</b>"+
+                  "<b class='col display-3' id='numTwo'>0</b>"+
+                  "<b class='col display-3'>=</b>"+
+                  "<b class='col display-3' id='numThree'>0</b>"+
+                  "<b class='col display-3' id='numThreet'></b>"+
+                  
+                  "<input id='ansvalue' class='col display-3' type='text' name='ansvalue' ></input>"+
+                  "<input class='col' type='submit' value='Answer' onclick='quiz()'>"+
+                    ""+
+              "</div>"+
+            "</div>";
             
 
-          <!-- //}
-           -->
-        <!-- </script> -->
+          }
+          
+        </script>
       </div>
          <div class="row" id="gameover">
            <script type="text/javascript">
@@ -190,12 +179,30 @@
 
 
 
-
-<!-- JavaScript  Starts-->
+<!-- nameEntry Function JS  Starts-->
 
 <script type="text/javascript">
-//<!-- JavaScript -->
+  var playername;
+  //Name Entry JS Function
+    function nameEntry() {
+         // Selecting the input element and get its value 
+            var name = document.getElementById("name").value;
+            playername = name;
+            
+            // Displaying the value
+        document.getElementById("playername").innerHTML="<h3 class='text-danger'>Lets play "+"</h3>"+"<h2 class='display-2 text-danger'>"+playername+"</h2>";
 
+        startgame();
+        quizbox();
+        quiz();
+    }
+</script>
+
+<!-- NameEntry Function JS  Ends-->
+
+
+<!-- JavaScript -->
+<script type="text/javascript">
   //VAriables
         //var setTime=30;//set time 15 sec per 
         var setTime=16;//set time 15 sec per 
@@ -203,78 +210,37 @@
         var score=0;
         var quesno=0;
         var ans=0;
+
         var a=0;
         var b=0;
         var result=0;
-        var playername="";
 
-
-  //Name Entry JS Function
-    function nameEntry() {
-      // Selecting the input element and get its value 
-      var name = document.getElementById("name").value;
-      playername = name;
-            
-            // Displaying the value
-        document.getElementById("playername").innerHTML="<h3 class='text-danger'>Lets play "+"</h3>"+"<h2 class='display-2 text-danger'>"+playername+"</h2>";
-        //Starting all functions
-        startgame();
-        quiz();
-        //ansSubmit();
-        //calculate();
-    }
-
-// NameEntry Function JS  Ends-->
-
-//QUIZ JS FUnction
+  //QUIZ JS FUnction
        function startgame(){
         setInterval(timecounter,1000);
-       
+
         }
     
   //Time Counter JS Function   
        function timecounter(){
               if (setTime>0) {
                
-                setTime=setTime-1;
+              setTime=setTime-1;
                 document.getElementById("currenttime").innerHTML="<h3 class='text-light' >"+"Time:"+setTime+"</h3>";
+              
               }
               else{
                 document.getElementById("currenttime").innerHTML="<h2 class='text-' >"+"Time's Up!!"+"</h2>";
                 //GAME OVER
-                //gameOver();
+                gameOver();
 
               }
            }
-//ansSubmit
-        function ansSubmit() {
-          // Ans
-          var playerans=document.getElementById("ansvalue").value;
-          alert("function ansSubmit() playerans "+playerans);
-          //return ans=playerans; 
-          result= quiz();
-          ans=playerans;
-          calculate(ans, result);
-        }           
 
-// function
-function calculate(ans,result) {
 
-//  alert("function calculate() Answer "+ans+" \n function calculate() Result "+result);
 
-  if (ans!=result) {
-    gameOver();
-  }else if(ans==result){
-    score=score+1;
-    document.getElementById("score").innerHTML="Score "+score;
-  }
-}
-//Quiz Function
+  //Quiz Function
     function quiz(){
-      //quesno
-      // Update question no
-        // quesno=quesno+1;
-        // document.getElementById("quesno").innerHTML="Question "+quesno;
       var a=2;
       var b=3;
       //a=Math.floor(Math.random() * 10);
@@ -288,19 +254,29 @@ function calculate(ans,result) {
       document.getElementById("numTwo").innerHTML=b;
       document.getElementById("numThree").innerHTML=result;
 
-      return quesno,result;
+
+      //id=ansvalue ans read print
+      ans=document.getElementById("ansvalue").value; //ansvalue
+      document.getElementById("numThreeT").innerHTML=" = "+ans;
+
+      // //ansSubmit
+      //   function ansSubmit() {
+      //     // Ans
+      //     var playerans=document.getElementById("ansvalue").value;
+      //   }
+      //   var ans= ansSubmit();
+
+      // //Compare 
+      // if (result=ans) {
+      //   alert("answer OK");
+      // }
+
     }
-
-
-
-
-
 
 </script>
 <!--  JavaScript -->
 
 
-  <!-- JS Codes  -->
 
 
 
