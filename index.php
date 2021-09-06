@@ -147,18 +147,18 @@
             //print quiz box
             //document.getElementById("quizbox").innerHTML= -->
             
-              <div class="offset-md-5 col-md-6">
+              <div class="offset-md-6 col-md-5">
                 <div class="row border border-5 border-primary rounded" style="background-color:rgba(220, 228, 252, 0.3);">
-                    <b class="col display-3" id="numOne" >0</b>
-                    <b class="col display-3">+</b>
-                    <b class="col display-3" id="numTwo">0</b>
-                    <b class="col display-3">=</b>
-                    <b class="col display-3" id="numThree">0</b>
+                    <b class="col-md-1 display-3 m-1" id="numOne" >0</b>
+                    <b class="col-md-1 display-3 m-1">+</b>
+                    <b class="col-md-1 display-3 m-1" id="numTwo">0</b>
+                    <b class="col-md-1 display-3 m-1">=</b>
+                    <b class="col-md-1 display-3 m-1" id="numThree">0</b>
                     <!-- <b class="col display-3" id="numThreet"></b> -->
  
-                    <input type="text" name="ansvalue" id="ansvalue" placeholder="" class="">
+                    <input type="text" name="ansvalue" id="ansvalue" placeholder="" class="col-md-2 m-1">
                     <!-- Submit Button -->
-                    <input type="submit" onclick="ansSubmit()" value="Answer" class=" btn btn-success m-1">
+                    <input type="submit" onclick="ansSubmit()" value="Answer" class="col-md-2 btn btn-success m-1 p-2">
                                 
                 </div>
               </div>
@@ -225,7 +225,7 @@
 //QUIZ JS FUnction
        function startgame(){
         starttimer();
-        quesnoprint()
+        quesnoprint();
         quiz();
         }
 //Question no updater
@@ -257,6 +257,24 @@
 
               }
            }
+
+//Quiz Function
+    function quiz(){
+      var a=2;
+      var b=3;
+      //a=Math.floor(Math.random() * 10);
+      //b=Math.floor(Math.random() * 10);
+      var result=a+b;
+      var ans
+      
+      //print a
+      document.getElementById("numOne").innerHTML=a;
+      //print b
+      document.getElementById("numTwo").innerHTML=b;
+      document.getElementById("numThree").innerHTML=result;
+
+      return result;
+    }
 //ansSubmit
         function ansSubmit() {
           // Ans
@@ -276,32 +294,9 @@
         }else if(ans==result){
           score=score+1;
           document.getElementById("score").innerHTML="Score "+score;
+          startgame();
         }
       }
-
-//Quiz Function
-    function quiz(){
-      //quesno
-      // Update question no
-        // quesno=quesno+1;
-        // document.getElementById("quesno").innerHTML="Question "+quesno;
-      var a=2;
-      var b=3;
-      //a=Math.floor(Math.random() * 10);
-      //b=Math.floor(Math.random() * 10);
-      var result=a+b;
-      var ans
-      
-      //print a
-      document.getElementById("numOne").innerHTML=a;
-      //print b
-      document.getElementById("numTwo").innerHTML=b;
-      document.getElementById("numThree").innerHTML=result;
-
-      return quesno,result;
-    }
-
-
 
 
 
