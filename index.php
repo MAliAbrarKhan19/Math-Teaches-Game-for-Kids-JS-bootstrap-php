@@ -191,7 +191,7 @@
 
   //VAriables
         //var setTime=30;//set time 15 sec per 
-        var setTime=30;//set time 15 sec per 
+        //var setTime=30;//set time 15 sec per 
         //var setTime=10;//set time 10 sec
         var score=0;
         var quesnum=0;
@@ -243,7 +243,7 @@
 
 //QUIZ JS start timerFUnction
        function starttimer(){
-        //setTime=16;//set time 15 sec per 
+        setTime=30;//set time 15 sec per 
         setInterval(timecounter,1000);
        
         }
