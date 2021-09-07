@@ -188,6 +188,7 @@
 
 
 
+
 <!-- JavaScript  Starts-->
 
 <script type="text/javascript">
@@ -200,6 +201,7 @@
         var score=0;
         var quesnum=0;
         var ans=0;
+        var num=0;
         var a=0;
         var b=0;
         var result=0;
@@ -224,14 +226,16 @@
 
 //QUIZ JS FUnction
        function startgame(){
-        starttimer();
+        //starttimer();
         quesnoprint();
-        quiz();
+        //quiz();
         }
 //Question no updater
         function quesnoprint() {
-          quesno();
+        quesno();
         document.getElementById("quesno").innerHTML="Question "+quesnum;
+        quiz();
+
         }
         function quesno(){
           quesnum=quesnum+1;
@@ -260,12 +264,15 @@
 
 //Quiz Function
     function quiz(){
-      var a=2;
-      var b=3;
-      //a=Math.floor(Math.random() * 10);
-      //b=Math.floor(Math.random() * 10);
+
+      // var a=2;
+      // var b=3;
+      starttimer();
+     
+      a=Math.floor(Math.random() * 10);
+      b=Math.floor(Math.random() * 10);
       var result=a+b;
-      var ans
+      sessionStorage.setItem("result",result);
       
       //print a
       document.getElementById("numOne").innerHTML=a;
@@ -275,13 +282,20 @@
 
       return result;
     }
+  //Number generate
+  function numgen() {
+    var a =Math.floor(Math.random() * 10);
+    var b =Math.floor(Math.random() * 10);
+    return [a,b];
+  }
 //ansSubmit
         function ansSubmit() {
           // Ans
           var playerans=document.getElementById("ansvalue").value;
           //alert("function ansSubmit() playerans "+playerans);
           //return ans=playerans; 
-          result= quiz();
+          //result= quiz();
+          result= sessionStorage.getItem("result");
           ans=playerans;
           checkans(ans, result);
         }           
@@ -306,6 +320,9 @@
 
 
   <!-- JS Codes  -->
+
+
+
 
 
 
