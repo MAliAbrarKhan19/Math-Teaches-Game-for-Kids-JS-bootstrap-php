@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=yes">
 
     <!-- Bootstrap CSS -->
-	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-grid.min.css">
-	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-utilities.min.css">
-	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-utilities.min.css">
+  <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-reboot.min.css">
 
 
   <!-- Bootstrap CSS -->
   <link rel="icon" type="text/css" href="./img/game.svg" class="text-danger" >
     
   
-	<title class="text-danger">Math Teaches</title>
+  <title class="text-danger">Math Teaches</title>
 
 <style type="text/css">
  
@@ -71,12 +71,6 @@
   <div class="col-md-1"></div>
 </div>
 <!-- Row 2 -->
-
-
-
-
-
-
 
 
 <!-- Row 3 -->
@@ -153,7 +147,7 @@
                     <b class="col-md-1 display-3 m-1">+</b>
                     <b class="col-md-1 display-3 m-1" id="numTwo">0</b>
                     <b class="col-md-1 display-3 m-1">=</b>
-                    <b class="col-md-1 display-3 m-1" id="numThree">0</b>
+                    <b class="col-md-1  m-1" id="numThree">0</b>
                     <!-- <b class="col display-3" id="numThreet"></b> -->
  
                     <input type="text" name="ansvalue" id="ansvalue" placeholder="" class="col-md-2 m-1">
@@ -188,7 +182,6 @@
 
 
 
-
 <!-- JavaScript  Starts-->
 
 <script type="text/javascript">
@@ -196,7 +189,7 @@
 
   //VAriables
         //var setTime=30;//set time 15 sec per 
-        var setTime=16;//set time 15 sec per 
+        var setTime=5;//set time 15 sec per 
         //var setTime=10;//set time 10 sec
         var score=0;
         var quesnum=0;
@@ -234,6 +227,7 @@
         function quesnoprint() {
         quesno();
         document.getElementById("quesno").innerHTML="Question "+quesnum;
+        starttimer();      
         quiz();
 
         }
@@ -243,21 +237,25 @@
 
 //QUIZ JS start timerFUnction
        function starttimer(){
+        //setTime=16;//set time 15 sec per 
         setInterval(timecounter,1000);
        
         }
     
   //Time Counter JS Function   
        function timecounter(){
+              
               if (setTime>0) {
                
                 setTime=setTime-1;
                 document.getElementById("currenttime").innerHTML="<h3 class='text-light' >"+"Time: "+setTime+"</h3>";
               }
-              else{
+              else if (setTime==0){
                 document.getElementById("currenttime").innerHTML="<h2 class='text-' >"+"Time's Up!!"+"</h2>";
                 //GAME OVER
                 gameOver();
+          clearInterval(timecounter);
+
 
               }
            }
@@ -267,10 +265,9 @@
 
       // var a=2;
       // var b=3;
-      starttimer();
      
-      a=Math.floor(Math.random() * 10);
-      b=Math.floor(Math.random() * 10);
+      a=Math.floor(Math.random() * 101);
+      b=Math.floor(Math.random() * 101);
       var result=a+b;
       sessionStorage.setItem("result",result);
       
@@ -282,12 +279,7 @@
 
       return result;
     }
-  //Number generate
-  function numgen() {
-    var a =Math.floor(Math.random() * 10);
-    var b =Math.floor(Math.random() * 10);
-    return [a,b];
-  }
+ 
 //ansSubmit
         function ansSubmit() {
           // Ans
@@ -308,6 +300,8 @@
         }else if(ans==result){
           score=score+1;
           document.getElementById("score").innerHTML="Score "+score;
+          clearInterval(timecounter);
+
           startgame();
         }
       }
@@ -320,9 +314,6 @@
 
 
   <!-- JS Codes  -->
-
-
-
 
 
 
@@ -344,9 +335,9 @@
   </div>
 </div>
 <!-- Javascripts  -->
-	<script type="text/javascript" src="./bootstrap/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="./bootstrap/bootstrap.min.js"></script>
-	<script type="text/javascript" src="./bootstrap/bootstrap.esm.min.js"></script>
+  <script type="text/javascript" src="./bootstrap/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="./bootstrap/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./bootstrap/bootstrap.esm.min.js"></script>
 
 
 <!-- Optional JavaScript; choose one of the two! -->
