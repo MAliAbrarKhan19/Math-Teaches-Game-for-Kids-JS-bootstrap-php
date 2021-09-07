@@ -140,17 +140,31 @@
             <!-- // function quizbox() {
             //print quiz box
             //document.getElementById("quizbox").innerHTML= -->
-            
-              <div class="offset-md-6 col-md-5">
+            <!--  -->
+            <div class="" style="" id="gameover">
+               <script type="text/javascript">
+                 function gameOver(){
+                  document.getElementById("gameover").innerHTML=
+                        "<div class='offset-md-4 col-md-10'style='z-index: 100; width: 100%; height: 100%; box-sizing: content-box; background-color:rgb(255, 219, 89);'>"+
+                          "<div class='row' style='height: 400px;width: 90px; background-color:rgb(254, 225, 87);'>"+
+                              "<blink><h1 class='col display-3 text-danger'>Game Over</h1></blink>"+
+                          "</div>"+
+                        "</div>";
+                        setTimeout(function(){window.location.reload()},5000);
+                }
+               </script>
+             </div>
+            <!--  -->
+              <div class=" offset-md-4 col-md-7" style="z-index: 10;">
                 <div class="row border border-5 border-primary rounded" style="background-color:rgba(220, 228, 252, 0.3);">
-                    <b class="col-md-1 display-3 m-1" id="numOne" >0</b>
-                    <b class="col-md-1 display-3 m-1">+</b>
-                    <b class="col-md-1 display-3 m-1" id="numTwo">0</b>
-                    <b class="col-md-1 display-3 m-1">=</b>
-                    <b class="col-md-1  m-1" id="numThree">0</b>
+                    <b class="col-md-2 display-4 m-1" id="numOne" >0</b>
+                    <b class="col-md-1 display-4 m-1">+</b>
+                    <b class="col-md-2 display-4 m-1" id="numTwo">0</b>
+                    <b class="col-md-1 display-4 m-1">=</b>
+                    <!-- <b class="col-md-1  m-1" id="numThree">0</b> -->
                     <!-- <b class="col display-3" id="numThreet"></b> -->
  
-                    <input type="text" name="ansvalue" id="ansvalue" placeholder="" class="col-md-2 m-1">
+                    <input type="text" name="ansvalue" id="ansvalue" placeholder="" class="col-md-3 m-1 display-4">
                     <!-- Submit Button -->
                     <input type="submit" onclick="ansSubmit()" value="Answer" class="col-md-2 btn btn-success m-1 p-2">
                                 
@@ -161,22 +175,10 @@
           <!-- //}
            -->
         <!-- </script> -->
-      </div>
-         <div class="row" id="gameover">
-           <script type="text/javascript">
-             function gameOver(){
-              document.getElementById("gameover").innerHTML=
-                    "<div class='offset-md-6 col-md-5'>"+
-                      "<div class='row' style='background-color:rgba(220, 228, 252, 0.3);'>"+
-                          "<blink><h1 class='col display-3 text-danger'>Game Over</h1></blink>"+
-                          
+      <!-- </div> -->
+         
 
-                      "</div>"+
-                    "</div>"
-            }
-           </script>
-         </div> 
-      
+  </div>    
 <!--Quiz- Row 4 Col 1 -->
 
 
@@ -189,7 +191,7 @@
 
   //VAriables
         //var setTime=30;//set time 15 sec per 
-        var setTime=5;//set time 15 sec per 
+        var setTime=30;//set time 15 sec per 
         //var setTime=10;//set time 10 sec
         var score=0;
         var quesnum=0;
@@ -203,8 +205,12 @@
 
   //Name Entry JS Function
     function nameEntry() {
+      //gameOver();//for testing
       // Selecting the input element and get its value 
       var name = document.getElementById("name").value;
+      if (name=="") {
+        alert("Please enter your name ..")
+      } else{
       playername = name;
             
             // Displaying the value
@@ -212,7 +218,7 @@
         //Starting all functions
         startgame();
         //quiz();
-        
+        }
     }
 
 // NameEntry Function JS  Ends-->
@@ -254,9 +260,7 @@
                 document.getElementById("currenttime").innerHTML="<h2 class='text-' >"+"Time's Up!!"+"</h2>";
                 //GAME OVER
                 gameOver();
-          clearInterval(timecounter);
-
-
+                clearInterval(timecounter);
               }
            }
 
