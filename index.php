@@ -155,18 +155,20 @@
                </script>
              </div>
             <!--  -->
-              <div class=" offset-md-4 col-md-7" style="z-index: 10;">
+              <div class=" offset-md-5 col-md-6 "  >
+                <!-- <div class="row quizbox" style="background-color:rgba(220, 228, 252, 0.3);"> -->
                 <div class="row border border-5 border-primary rounded" style="background-color:rgba(220, 228, 252, 0.3);">
-                    <b class="col-md-2 display-4 m-1" id="numOne" >0</b>
-                    <b class="col-md-1 display-4 m-1">+</b>
-                    <b class="col-md-2 display-4 m-1" id="numTwo">0</b>
-                    <b class="col-md-1 display-4 m-1">=</b>
+                    <b class="col-md-2 display-4 m-1" id="numOne" ></b>
+                    <b class="col-md-1 display-4 m-1" id="mathsym"></b>
+                    <b class="col-md-2 display-4 m-1" id="numTwo"></b>
+                    <b class="col-md-1 display-4 m-1" id="eqsym"></b>
                     <!-- <b class="col-md-1  m-1" id="numThree">0</b> -->
                     <!-- <b class="col display-3" id="numThreet"></b> -->
- 
+                      
+                    
                     <input type="text" name="ansvalue" id="ansvalue" placeholder="" class="col-md-3 m-1 display-4">
                     <!-- Submit Button -->
-                    <input type="submit" onclick="ansSubmit()" value="Answer" class="col-md-2 btn btn-success m-1 p-2">
+                    <input type="submit" onclick="ansSubmit()" value="Answer" class="col-md-2 btn btn-success ">
                                 
                 </div>
               </div>
@@ -269,7 +271,10 @@
 
       // var a=2;
       // var b=3;
-     
+     //border border-5 border-primary rounded
+     //document.querySelector(div.quizbox).class="row border border-5 border-primary rounded";
+
+
       a=Math.floor(Math.random() * 101);
       b=Math.floor(Math.random() * 101);
       var result=a+b;
@@ -277,8 +282,10 @@
       
       //print a
       document.getElementById("numOne").innerHTML=a;
+      document.getElementById("mathsym").innerHTML="+";
       //print b
       document.getElementById("numTwo").innerHTML=b;
+      document.getElementById("eqsym").innerHTML="=";
       document.getElementById("numThree").innerHTML=result;
 
       return result;
